@@ -21,5 +21,5 @@
       ✓ should return number of rebounds for the player with the biggest shoe
 
 
-  7 passing (247ms)
+  7 passing (427ms)
 
