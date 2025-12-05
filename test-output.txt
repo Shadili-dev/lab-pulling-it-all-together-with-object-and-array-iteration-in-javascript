@@ -1,0 +1,25 @@
+
+> phase-1-object-ball@1.0.0 test
+> mocha --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json
+
+
+
+  Basketball Stats
+    numPointsScored
+      ✓ should return points scored by a player
+    shoeSize
+      ✓ should return shoe size of a player
+    teamColors
+      ✓ should return team colors
+    teamNames
+      ✓ should return team names
+    playerNumbers
+      ✓ should return player numbers of a team
+    playerStats
+      ✓ should return stats of a player
+    bigShoeRebounds
+      ✓ should return number of rebounds for the player with the biggest shoe
+
+
+  7 passing (247ms)
+

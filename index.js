@@ -1,394 +1,362 @@
-const gameObject = () => {
-    return {
-        home: {
-            teamName: "Brooklyn Nets",
-            colors: ["Black", "White"],
-            players: {
-                "Alan Anderson": {
-                    number: 0,
-                    shoe: 16,
-                    points: 22,
-                    rebounds: 12,
-                    assists: 12,
-                    steals: 3,
-                    blocks: 1,
-                    slamDunks: 1
-                },
-                "Reggie Evans": {
-                    number: 30,
-                    shoe: 14,
-                    points: 12,
-                    rebounds: 12,
-                    assists: 12,
-                    steals: 12,
-                    blocks: 12,
-                    slamDunks: 7
-                },
-                "Brook Lopez": {
-                    number: 11,
-                    shoe: 17,
-                    points: 17,
-                    rebounds: 19,
-                    assists: 10,
-                    steals: 3,
-                    blocks: 1,
-                    slamDunks: 15
-                },
-                "Mason Plumlee": {
-                    number: 1,
-                    shoe: 19,
-                    points: 26,
-                    rebounds: 12,
-                    assists: 6,
-                    steals: 3,
-                    blocks: 8,
-                    slamDunks: 5
-                },
-                "Jason Terry": {
-                    number: 31,
-                    shoe: 15,
-                    points: 19,
-                    rebounds: 2,
-                    assists: 2,
-                    steals: 4,
-                    blocks: 11,
-                    slamDunks: 1
-                }
-            }
+// index.js
+
+function gameObject() {
+  return {
+    home: {
+      teamName: "Brooklyn Nets",
+      colors: ["Black", "White"],
+      players: {
+        "Alan Anderson": {
+          number: 0,
+          shoe: 16,
+          points: 22,
+          rebounds: 12,
+          assists: 12,
+          steals: 3,
+          blocks: 1,
+          slamDunks: 1
         },
-        away: {
-            teamName: "Charlotte Hornets",
-            colors: ["Turquoise", "Purple"],
-            players: {
-                "Jeff Adrien": {
-                    number: 4,
-                    shoe: 18,
-                    points: 10,
-                    rebounds: 1,
-                    assists: 1,
-                    steals: 2,
-                    blocks: 7,
-                    slamDunks: 2
-                },
-                "Bismack Biyombo": {
-                    number: 0,
-                    shoe: 16,
-                    points: 12,
-                    rebounds: 4,
-                    assists: 7,
-                    steals: 7,
-                    blocks: 15,
-                    slamDunks: 10
-                },
-                "DeSagna Diop": {
-                    number: 2,
-                    shoe: 14,
-                    points: 24,
-                    rebounds: 12,
-                    assists: 12,
-                    steals: 4,
-                    blocks: 5,
-                    slamDunks: 5
-                },
-                "Ben Gordon": {
-                    number: 8,
-                    shoe: 15,
-                    points: 33,
-                    rebounds: 3,
-                    assists: 2,
-                    steals: 1,
-                    blocks: 1,
-                    slamDunks: 0
-                },
-                "Brendan Haywood": {
-                    number: 33,
-                    shoe: 15,
-                    points: 6,
-                    rebounds: 12,
-                    assists: 12,
-                    steals: 22,
-                    blocks: 5,
-                    slamDunks: 12
-                }
-            }
+        "Reggie Evans": {
+          number: 30,
+          shoe: 14,
+          points: 12,
+          rebounds: 12,
+          assists: 12,
+          steals: 12,
+          blocks: 12,
+          slamDunks: 7
+        },
+        "Brook Lopez": {
+          number: 11,
+          shoe: 17,
+          points: 17,
+          rebounds: 19,
+          assists: 10,
+          steals: 3,
+          blocks: 1,
+          slamDunks: 15
+        },
+        "Mason Plumlee": {
+          number: 1,
+          shoe: 19,
+          points: 26,
+          rebounds: 12,
+          assists: 6,
+          steals: 3,
+          blocks: 8,
+          slamDunks: 5
+        },
+        "Jason Terry": {
+          number: 31,
+          shoe: 15,
+          points: 19,
+          rebounds: 2,
+          assists: 2,
+          steals: 4,
+          blocks: 11,
+          slamDunks: 1
         }
-    };
-};
+      }
+    },
+    away: {
+      teamName: "Charlotte Hornets",
+      colors: ["Turquoise", "Purple"],
+      players: {
+        "Jeff Adrien": {
+          number: 4,
+          shoe: 18,
+          points: 10,
+          rebounds: 1,
+          assists: 1,
+          steals: 2,
+          blocks: 7,
+          slamDunks: 2
+        },
+        "Bismak Biyombo": {
+          number: 0,
+          shoe: 16,
+          points: 12,
+          rebounds: 4,
+          assists: 7,
+          steals: 7,
+          blocks: 15,
+          slamDunks: 10
+        },
+        "DeSagna Diop": {
+          number: 2,
+          shoe: 14,
+          points: 24,
+          rebounds: 12,
+          assists: 12,
+          steals: 4,
+          blocks: 5,
+          slamDunks: 5
+        },
+        "Ben Gordon": {
+          number: 8,
+          shoe: 15,
+          points: 33,
+          rebounds: 3,
+          assists: 2,
+          steals: 1,
+          blocks: 1,
+          slamDunks: 0
+        },
+        "Brendan Haywood": {
+          number: 33,
+          shoe: 15,
+          points: 6,
+          rebounds: 12,
+          assists: 12,
+          steals: 22,
+          blocks: 5,
+          slamDunks: 12
+        }
+      }
+    }
+  };
+}
 
-// ====================
-// 1. Retrieve Player Information
-// ====================
+// Helper function to find player
+function findPlayer(playerName) {
+  var game = gameObject();
+  
+  // Check home team
+  if (game.home.players[playerName]) {
+    return { team: 'home', stats: game.home.players[playerName] };
+  }
+  
+  // Check away team
+  if (game.away.players[playerName]) {
+    return { team: 'away', stats: game.away.players[playerName] };
+  }
+  
+  return null;
+}
 
-/**
- * Get points scored by a player
- * @param {string} playerName - Name of the player
- * @returns {number} Points scored
- */
+// 1. numPointsScored
 function numPointsScored(playerName) {
-    const game = gameObject();
-    
-    // Check home team
-    for (const player in game.home.players) {
-        if (player === playerName) {
-            return game.home.players[player].points;
-        }
-    }
-    
-    // Check away team
-    for (const player in game.away.players) {
-        if (player === playerName) {
-            return game.away.players[player].points;
-        }
-    }
-    
-    return 0; // Player not found
+  var player = findPlayer(playerName);
+  return player ? player.stats.points : 0;
 }
 
-/**
- * Get shoe size of a player
- * @param {string} playerName - Name of the player
- * @returns {number} Shoe size
- */
+// 2. shoeSize
 function shoeSize(playerName) {
-    const game = gameObject();
-    
-    // Check home team
-    for (const player in game.home.players) {
-        if (player === playerName) {
-            return game.home.players[player].shoe;
-        }
-    }
-    
-    // Check away team
-    for (const player in game.away.players) {
-        if (player === playerName) {
-            return game.away.players[player].shoe;
-        }
-    }
-    
-    return 0; // Player not found
+  var player = findPlayer(playerName);
+  return player ? player.stats.shoe : 0;
 }
 
-// ====================
-// 2. Retrieve Team Information
-// ====================
-
-/**
- * Get team colors
- * @param {string} teamName - Name of the team
- * @returns {Array} Array of colors
- */
+// 3. teamColors
 function teamColors(teamName) {
-    const game = gameObject();
-    
-    if (game.home.teamName === teamName) {
-        return game.home.colors;
-    } else if (game.away.teamName === teamName) {
-        return game.away.colors;
-    }
-    
-    return []; // Team not found
+  var game = gameObject();
+  
+  if (game.home.teamName === teamName) {
+    return game.home.colors;
+  } else if (game.away.teamName === teamName) {
+    return game.away.colors;
+  }
+  
+  return [];
 }
 
-/**
- * Get all team names
- * @returns {Array} Array of team names
- */
+// 4. teamNames
 function teamNames() {
-    const game = gameObject();
-    return [game.home.teamName, game.away.teamName];
+  var game = gameObject();
+  return [game.home.teamName, game.away.teamName];
 }
 
-// ====================
-// 3. Retrieve Player Numbers and Stats
-// ====================
-
-/**
- * Get all player numbers for a team
- * @param {string} teamName - Name of the team
- * @returns {Array} Array of player numbers
- */
+// 5. playerNumbers
 function playerNumbers(teamName) {
-    const game = gameObject();
-    const numbers = [];
-    
-    if (game.home.teamName === teamName) {
-        for (const player in game.home.players) {
-            numbers.push(game.home.players[player].number);
-        }
-    } else if (game.away.teamName === teamName) {
-        for (const player in game.away.players) {
-            numbers.push(game.away.players[player].number);
-        }
+  var game = gameObject();
+  var team = null;
+  
+  if (game.home.teamName === teamName) {
+    team = game.home;
+  } else if (game.away.teamName === teamName) {
+    team = game.away;
+  }
+  
+  if (!team) return [];
+  
+  var numbers = [];
+  var players = team.players;
+  
+  for (var playerName in players) {
+    if (players.hasOwnProperty(playerName)) {
+      numbers.push(players[playerName].number);
     }
-    
-    return numbers.sort((a, b) => a - b); // Return sorted numbers
+  }
+  
+  return numbers;
 }
 
-/**
- * Get all stats for a player
- * @param {string} playerName - Name of the player
- * @returns {Object} Player stats object
- */
+// 6. playerStats
 function playerStats(playerName) {
-    const game = gameObject();
-    
-    // Check home team
-    for (const player in game.home.players) {
-        if (player === playerName) {
-            return { ...game.home.players[player] };
-        }
-    }
-    
-    // Check away team
-    for (const player in game.away.players) {
-        if (player === playerName) {
-            return { ...game.away.players[player] };
-        }
-    }
-    
-    return {}; // Player not found
+  var player = findPlayer(playerName);
+  return player ? player.stats : {};
 }
 
-// ====================
-// 4. Advanced Challenge
-// ====================
-
-/**
- * Get rebounds for player with largest shoe size
- * @returns {number} Rebounds
- */
+// 7. bigShoeRebounds
 function bigShoeRebounds() {
-    const game = gameObject();
-    let maxShoeSize = 0;
-    let playerWithMaxShoe = null;
-    
-    // Check all players
-    const allPlayers = { ...game.home.players, ...game.away.players };
-    
-    for (const playerName in allPlayers) {
-        const player = allPlayers[playerName];
-        if (player.shoe > maxShoeSize) {
-            maxShoeSize = player.shoe;
-            playerWithMaxShoe = player;
-        }
+  var game = gameObject();
+  var maxShoeSize = 0;
+  var rebounds = 0;
+  
+  // Check home team
+  var homePlayers = game.home.players;
+  for (var homePlayer in homePlayers) {
+    if (homePlayers.hasOwnProperty(homePlayer)) {
+      var player = homePlayers[homePlayer];
+      if (player.shoe > maxShoeSize) {
+        maxShoeSize = player.shoe;
+        rebounds = player.rebounds;
+      }
     }
-    
-    return playerWithMaxShoe ? playerWithMaxShoe.rebounds : 0;
+  }
+  
+  // Check away team
+  var awayPlayers = game.away.players;
+  for (var awayPlayer in awayPlayers) {
+    if (awayPlayers.hasOwnProperty(awayPlayer)) {
+      var player = awayPlayers[awayPlayer];
+      if (player.shoe > maxShoeSize) {
+        maxShoeSize = player.shoe;
+        rebounds = player.rebounds;
+      }
+    }
+  }
+  
+  return rebounds;
 }
 
-// ====================
-// BONUS QUESTIONS
-// ====================
-
-/**
- * Get player with most points
- * @returns {string} Player name with most points
- */
+// Bonus 1: mostPointsScored
 function mostPointsScored() {
-    const game = gameObject();
-    let maxPoints = 0;
-    let topPlayer = "";
-    
-    const allPlayers = { ...game.home.players, ...game.away.players };
-    
-    for (const playerName in allPlayers) {
-        const player = allPlayers[playerName];
-        if (player.points > maxPoints) {
-            maxPoints = player.points;
-            topPlayer = playerName;
-        }
+  var game = gameObject();
+  var maxPoints = 0;
+  var topScorer = '';
+  
+  // Check home team
+  var homePlayers = game.home.players;
+  for (var homePlayer in homePlayers) {
+    if (homePlayers.hasOwnProperty(homePlayer)) {
+      var player = homePlayers[homePlayer];
+      if (player.points > maxPoints) {
+        maxPoints = player.points;
+        topScorer = homePlayer;
+      }
     }
-    
-    return topPlayer;
+  }
+  
+  // Check away team
+  var awayPlayers = game.away.players;
+  for (var awayPlayer in awayPlayers) {
+    if (awayPlayers.hasOwnProperty(awayPlayer)) {
+      var player = awayPlayers[awayPlayer];
+      if (player.points > maxPoints) {
+        maxPoints = player.points;
+        topScorer = awayPlayer;
+      }
+    }
+  }
+  
+  return topScorer;
 }
 
-/**
- * Get winning team (team with most total points)
- * @returns {string} Winning team name
- */
+// Bonus 2: winningTeam
 function winningTeam() {
-    const game = gameObject();
-    
-    let homePoints = 0;
-    for (const player in game.home.players) {
-        homePoints += game.home.players[player].points;
+  var game = gameObject();
+  var homePoints = 0;
+  var awayPoints = 0;
+  
+  // Calculate home team points
+  var homePlayers = game.home.players;
+  for (var homePlayer in homePlayers) {
+    if (homePlayers.hasOwnProperty(homePlayer)) {
+      homePoints += homePlayers[homePlayer].points;
     }
-    
-    let awayPoints = 0;
-    for (const player in game.away.players) {
-        awayPoints += game.away.players[player].points;
+  }
+  
+  // Calculate away team points
+  var awayPlayers = game.away.players;
+  for (var awayPlayer in awayPlayers) {
+    if (awayPlayers.hasOwnProperty(awayPlayer)) {
+      awayPoints += awayPlayers[awayPlayer].points;
     }
-    
-    return homePoints > awayPoints ? game.home.teamName : game.away.teamName;
+  }
+  
+  return homePoints > awayPoints ? game.home.teamName : game.away.teamName;
 }
 
-/**
- * Get player with longest name
- * @returns {string} Player with longest name
- */
+// Bonus 3: playerWithLongestName
 function playerWithLongestName() {
-    const game = gameObject();
-    let longestName = "";
-    
-    const allPlayers = { ...game.home.players, ...game.away.players };
-    
-    for (const playerName in allPlayers) {
-        if (playerName.length > longestName.length) {
-            longestName = playerName;
-        }
+  var game = gameObject();
+  var longestName = '';
+  var maxLength = 0;
+  
+  // Check home team
+  var homePlayers = game.home.players;
+  for (var homePlayer in homePlayers) {
+    if (homePlayers.hasOwnProperty(homePlayer)) {
+      if (homePlayer.length > maxLength) {
+        maxLength = homePlayer.length;
+        longestName = homePlayer;
+      }
     }
-    
-    return longestName;
+  }
+  
+  // Check away team
+  var awayPlayers = game.away.players;
+  for (var awayPlayer in awayPlayers) {
+    if (awayPlayers.hasOwnProperty(awayPlayer)) {
+      if (awayPlayer.length > maxLength) {
+        maxLength = awayPlayer.length;
+        longestName = awayPlayer;
+      }
+    }
+  }
+  
+  return longestName;
 }
 
-// ====================
-// SUPER BONUS CHALLENGE
-// ====================
-
-/**
- * Check if player with longest name has most steals
- * @returns {boolean} True if longest name player has most steals
- */
+// Super Bonus: doesLongNameStealATon
 function doesLongNameStealATon() {
-    const game = gameObject();
-    const allPlayers = { ...game.home.players, ...game.away.players };
-    
-    // Find player with longest name
-    let longestNamePlayer = "";
-    for (const playerName in allPlayers) {
-        if (playerName.length > longestNamePlayer.length) {
-            longestNamePlayer = playerName;
-        }
+  var game = gameObject();
+  var longestName = playerWithLongestName();
+  
+  // Find the player with longest name
+  var longestNamePlayer = null;
+  
+  if (game.home.players[longestName]) {
+    longestNamePlayer = game.home.players[longestName];
+  } else if (game.away.players[longestName]) {
+    longestNamePlayer = game.away.players[longestName];
+  }
+  
+  if (!longestNamePlayer) return false;
+  
+  var longestNameSteals = longestNamePlayer.steals;
+  var maxSteals = 0;
+  
+  // Check all players for max steals
+  var homePlayers = game.home.players;
+  for (var homePlayer in homePlayers) {
+    if (homePlayers.hasOwnProperty(homePlayer)) {
+      var player = homePlayers[homePlayer];
+      if (player.steals > maxSteals) {
+        maxSteals = player.steals;
+      }
     }
-    
-    // Find max steals
-    let maxSteals = 0;
-    for (const playerName in allPlayers) {
-        if (allPlayers[playerName].steals > maxSteals) {
-            maxSteals = allPlayers[playerName].steals;
-        }
+  }
+  
+  var awayPlayers = game.away.players;
+  for (var awayPlayer in awayPlayers) {
+    if (awayPlayers.hasOwnProperty(awayPlayer)) {
+      var player = awayPlayers[awayPlayer];
+      if (player.steals > maxSteals) {
+        maxSteals = player.steals;
+      }
     }
-    
-    // Check if longest name player has max steals
-    return allPlayers[longestNamePlayer].steals === maxSteals;
+  }
+  
+  return longestNameSteals === maxSteals;
 }
-
-// ====================
-// EXPORT FUNCTIONS
-// ====================
-
-module.exports = {
-    gameObject,
-    numPointsScored,
-    shoeSize,
-    teamColors,
-    teamNames,
-    playerNumbers,
-    playerStats,
-    bigShoeRebounds,
-    mostPointsScored,
-    winningTeam,
-    playerWithLongestName,
-    doesLongNameStealATon
-};
